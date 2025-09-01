@@ -1,0 +1,42 @@
+managed;// implementation in class zbp_i_travel_tech_m_zlc unique;
+strict ( 2 );
+
+define behavior for ZI_TRAVEL_TECH_M_ZLC //alias <alias_name>
+implementation in class zcl_bp_travel_zlc unique // bp for behaviour pool
+persistent table ztravel_techmzlc
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) TravelId;
+  association _Booking { create; }
+}
+
+define behavior for ZI_BOOKING_TECH_M_ZLC //alias <alias_name>
+persistent table zbooking_techmlc
+lock dependent by _Travel
+authorization dependent by _Travel
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId;
+  association _Travel;
+  association _Bookingsuppl { create; }
+}
+
+define behavior for ZI_BOOKSUPPLTECHM //alias <alias_name>
+persistent table zbooksuppltechlc
+lock dependent by _Travel
+authorization dependent by _Travel
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId, BookingSupplementId;
+  association _Travel;
+  association _Booking;
+}
