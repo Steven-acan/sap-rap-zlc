@@ -35,10 +35,15 @@ define root view entity ZI_TRAVEL_TECH_M_ZLC
 
 
 
-
+      @Semantics.user.createdBy: true
       created_by      as CreatedBy,
+      @Semantics.systemDateTime.createdAt: true
       created_at      as CreatedAt,
+      @Semantics.user.lastChangedBy: true
       last_changed_by as LastChangedBy,
+      @Semantics.systemDateTime: { lastChangedAt: true,
+                                   localInstanceLastChangedAt: true }
+      
       last_changed_at as LastChangedAt,
 
       _Agency,

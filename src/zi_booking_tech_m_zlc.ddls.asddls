@@ -34,6 +34,10 @@ define view entity ZI_BOOKING_TECH_M_ZLC
       flight_price    as FlightPrice,
       currency_code   as CurrencyCode,
       booking_status  as BookingStatus,
+
+
+      @Semantics.systemDateTime: { lastChangedAt: true, 
+                                   localInstanceLastChangedAt: true}
       last_changed_at as LastChangedAt,
 
       _Carrier,

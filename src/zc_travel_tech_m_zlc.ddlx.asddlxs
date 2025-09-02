@@ -98,7 +98,8 @@ annotate view ZC_TRAVEL_TECH_M_ZLC with
   Description;
 
   @UI:{ lineItem:[ { position: 70 } ] ,
-        selectionField: [ { position: 70 } ]
+        selectionField: [ { position: 70 } ],
+        identification: [{ position: 90 }]
        }
   @Search.defaultSearchElement: true
   @Consumption.valueHelpDefinition:[ {

@@ -23,6 +23,8 @@ define view entity ZI_BOOKSUPPLTECHM
       @Semantics.amount.currencyCode: 'CurrencyCode'
       price                 as Price,
       currency_code         as CurrencyCode,
+      @Semantics.systemDateTime: { lastChangedAt: true, 
+                                   localInstanceLastChangedAt: true }
       last_changed_at       as LastChangedAt,
 
       _Supplement,
