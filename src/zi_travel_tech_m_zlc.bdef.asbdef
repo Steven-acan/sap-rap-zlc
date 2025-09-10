@@ -2,16 +2,17 @@ managed;// implementation in class zbp_i_travel_tech_m_zlc unique;
 strict ( 2 );
 
 define behavior for ZI_TRAVEL_TECH_M_ZLC //alias <alias_name>
-implementation in class zcl_bp_travel_zlc unique // bp for behaviour pool
+implementation in class zcl_bp_travel_zlc1 unique // bp for behaviour pool
 persistent table ztravel_techmzlc
 lock master
 authorization master ( instance )
 etag master LastChangedAt
+early numbering
 {
-  create ( authorization : global );
+  create;
   update;
   delete;
-//  field ( readonly ) TravelId;
+  field ( readonly ) TravelId;
   association _Booking { create; }
 
   mapping for ztravel_techmzlc
@@ -39,10 +40,11 @@ persistent table zbooking_techmlc
 lock dependent by _Travel
 authorization dependent by _Travel
 etag master LastChangedAt
+early numbering
 {
   update;
   delete;
-  field ( readonly ) TravelId; //BookingId;
+  field ( readonly ) TravelId, BookingId;
   association _Travel;
   association _Bookingsuppl { create; }
 
@@ -68,6 +70,7 @@ persistent table zbooksuppltechlc
 lock dependent by _Travel
 authorization dependent by _Travel
 etag master LastChangedAt
+early numbering
 {
   update;
   delete;
